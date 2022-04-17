@@ -1,6 +1,6 @@
 puts "TOPOLOGIA2_LINK_STATE"
 
-# Creates a procedure
+# Creates a procedure (runs on 5.0 end)
 proc finish {} {
   global ns nf f
   $ns flush-trace

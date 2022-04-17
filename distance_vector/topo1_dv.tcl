@@ -1,6 +1,11 @@
 puts "TOPOLOGIA1_DISTANCE_VECTOR"
 
-# Creates a procedure
+# Record procedure
+proc record {} {
+	global sink, f
+}
+
+# Creates a procedure (runs on 5.0 end)
 proc finish {} {
   global ns nf f
   $ns flush-trace
@@ -13,7 +18,8 @@ proc finish {} {
 
   # Executes NAM and uses generated file
   exec nam topologia1_distance_vector.nam &
-  exit 0
+
+	exit 0
 }
 
 # Creates a new object (simulator)
@@ -48,7 +54,7 @@ for {set i 0} {$i < 3} {incr i} { $ns duplex-link-op $n($i) $n([expr $i + 1]) or
 # Set a vert weight (with same neighbor config)
 for {set i 0} {$i < 3} {incr i} { $ns cost $n($i) $n([expr $i + 1]) 1 }
 
-# UDP Connection
+# UDP Connection (source)
 set udp [new Agent/UDP]
 $ns attach-agent $n(0) $udp
 $udp set class_ 1

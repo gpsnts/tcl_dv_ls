@@ -1,6 +1,6 @@
 puts "TOPOLOGIA2_DISTANCE_VECTOR"
 
-# Creates a procedure
+# Creates a procedure (runs on 5.0 end)
 proc finish {} {
   global ns nf f
   $ns flush-trace
@@ -12,7 +12,8 @@ proc finish {} {
   close $f
 
   # Executes NAM and uses generated file
-  exec nam topologia2_distance_vector.nam &
+  # exec nam topologia2_distance_vector.nam &
+
   exit 0
 }
 
