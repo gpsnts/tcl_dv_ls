@@ -1,14 +1,15 @@
 #!/bin/sh
 
-rm topologia*
 rm -rf results 2> /dev/null
 
 # Topologia 1
 ns distance_vector/topo1_dv.tcl
+# cat topologia1_distance_vector | grep -oP '(?<=\s).*(?=\s)' > $1
 
 sleep 1
 
 # Topologia 2
 ns distance_vector/topo2_dv.tcl
+# echo "$1" | grep -oP '(?<=\s).*(?=\s)' > $1
 
 exit

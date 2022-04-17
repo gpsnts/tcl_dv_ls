@@ -187,7 +187,7 @@ $ns at 8.0 "$source0 stop"
 $ns at 8.0 "$source1 stop"
 $ns at 8.0 "$source2 stop"
 $ns at 8.0 "$cbr stop"
-$ns at 8.5 "finish"
+$ns at 8.0 "finish"
 
 # Run project/script
 $ns run
