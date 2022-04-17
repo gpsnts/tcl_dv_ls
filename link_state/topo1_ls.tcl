@@ -3,6 +3,12 @@ puts "TOPOLOGIA1_LINK_STATE"
 # Creates a procedure (runs on 5.0 end)
 proc finish {} {
   global ns nf f
+	global f0 f1 f2
+  
+  close $f0
+  close $f1
+  close $f2
+
   $ns flush-trace
     
 	# Closes nam tracing
@@ -72,17 +78,6 @@ proc record {} {
   $ns at [expr $now+$time] "record"
 }
 
-proc finish {} {
-  global f0 f1 f2
-  
-  close $f0
-  close $f1
-  close $f2
-  
-	# exec xgraph out0.tr out1.tr out2.tr &
-  exit 0
-}
-
 # Traffic sinks to attach them to the node n4
 set sink0 [new Agent/LossMonitor]
 set sink1 [new Agent/LossMonitor]
@@ -91,7 +86,7 @@ set sink2 [new Agent/LossMonitor]
 # Creates a new object (simulator)
 set ns [new Simulator]
 
-# Sets a protocol (Distance-Vector)
+# Sets a protocol (Link-State)
 $ns rtproto LS
 
 # Set a data-logging graph color (NAM uses)
@@ -152,22 +147,20 @@ $ns attach-agent $n(4) $null
 
 # UDP association (to null agent)
 $ns connect $udp $null
-$ns rtmodel-at 1.0 down $n(0) $n(1)
+$ns rtmodel-at 2.5 down $n(0) $n(1)
 $ns rtmodel-at 5.0 up $n(0) $n(1)
 
 # Event assignment (CBR)
 $ns at 0.0 "record"
 $ns at 1.0 "$cbr start"
-$ns at 1.2 "$source0 start"
-$ns at 1.2 "$source1 start"
-$ns at 1.2 "$source2 start"
+$ns at 1.0 "$source0 start"
+$ns at 1.0 "$source1 start"
+$ns at 1.0 "$source2 start"
 $ns at 8.0 "$source0 stop"
 $ns at 8.0 "$source1 stop"
 $ns at 8.0 "$source2 stop"
 $ns at 8.0 "$cbr stop"
-
-# Sets timeout after 5.0 secs
-$ns at 10.0 "finish"
+$ns at 8.5 "finish"
 
 # Run project/script
 $ns run

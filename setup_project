@@ -4,4 +4,4 @@ sudo apt install ns2 tclsh nam;
 
 wget https://www.xgraph.org/linux/xgraph_4.38_linux64.tar.gz;
 tar -zxvf xgraph_4.38_linux64.tar.gz;
-sudo XGraph4.38_linux64/bin/xgraph /bin/xgraph
+sudo cp -r XGraph4.38_linux64/bin/xgraph /bin/xgraph
