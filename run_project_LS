@@ -1,0 +1,14 @@
+#!/bin/sh
+
+rm topologia*
+rm -rf results 2> /dev/null
+
+# Topologia 1
+ns link_state/topo1_ls.tcl
+
+sleep 1
+
+# Topologia 2
+ns link_state/topo2_ls.tcl
+
+exit

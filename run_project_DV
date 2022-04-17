@@ -1,0 +1,14 @@
+#!/bin/sh
+
+rm topologia*
+rm -rf results 2> /dev/null
+
+# Topologia 1
+ns distance_vector/topo1_dv.tcl
+
+sleep 1
+
+# Topologia 2
+ns distance_vector/topo2_dv.tcl
+
+exit
