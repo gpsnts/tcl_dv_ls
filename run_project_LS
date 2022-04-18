@@ -1,6 +1,5 @@
 #!/bin/sh
 
-rm topologia*
 rm -rf results 2> /dev/null
 
 # Topologia 1
